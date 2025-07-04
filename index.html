@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio - Lucas Gomes</title>
+  <style>
+    :root {
+      --dark-bg: #121212;
+      --dark-bg-alt: #1e1e1e;
+      --text-light: #e0e0e0;
+      --accent: #2979ff;
+      --transition: 0.6s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--dark-bg-alt);
+      padding: 2rem 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+    }
+
+    header h1 {
+      margin-top: 1rem;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    nav {
+      position: fixed;
+      right: 1rem;
+      top: 1rem;
+    }
+
+    nav a {
+      color: var(--text-light);
+      margin-left: 1rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+
+    /* About me */
+    #about p {
+      margin-top: 1rem;
+    }
+
+    /* Specializations */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .skill-card {
+      background: var(--dark-bg-alt);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      transition: transform var(--transition);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .project-card {
+      background: var(--dark-bg-alt);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      transition: transform var(--transition);
+      position: relative;
+    }
+
+    .project-card img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 100%;
+      width: auto;
+      transform: translate(-50%, -50%);
+    }
+
+    .project-card .content {
+      padding: 1rem;
+      position: relative;
+      z-index: 1;
+      background: rgba(18, 18, 18, 0.7);
+    }
+
+    .project-card h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Contact */
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    #contact input,
+    #contact textarea {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 4px;
+      background: var(--dark-bg-alt);
+      color: var(--text-light);
+    }
+
+    #contact button {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 4px;
+      background: var(--accent);
+      color: #121212;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+
+    #contact button:hover {
+      background: #1c54b2;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Scroll reveal */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity var(--transition), transform var(--transition);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Specializations</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <header>
+    <img src="assets/Linkedin Profile Pic.png" alt="Lucas Gomes Photo">
+    <h1>Lucas Gomes</h1>
+    <p>Front-end Developer & Full-stack Enthusiast</p>
+  </header>
+
+  <section id="about" class="reveal">
+    <h2>About Me</h2>
+    <p>
+      I’m a software developer with a track record since 2020 of designing and delivering front-end solutions at a
+      software factory.
+      My expertise spans Angular, React and full-stack technologies (TypeScript, Node.js, Java, Python), and I’ve led
+      end-to-end implementations of SaaS platforms and enterprise applications.
+      Passionate about clean code, scalable architectures and continuous innovation, I’m eager to contribute my skills
+      to high-impact international projects and collaborative remote teams.
+    </p>
+  </section>
+
+
+  <section id="skills" class="reveal">
+    <h2>Specializations</h2>
+    <div class="skills">
+      <div class="skill-card">Angular (v2+)</div>
+      <div class="skill-card">React</div>
+      <div class="skill-card">React Native (Expo)</div>
+      <div class="skill-card">TypeScript & JavaScript (ES6+)</div>
+      <div class="skill-card">HTML5, SCSS & CSS3</div>
+      <div class="skill-card">Node.js</div>
+      <div class="skill-card">Django</div>
+      <div class="skill-card">Python</div>
+      <div class="skill-card">Java</div>
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="assets/VoiceTask-logo.png" alt="VoiceTask">
+        <div class="content">
+          <h3>VoiceTask</h3>
+          <p>Personal financial assistant with audio transcription and LLMs (GPT-4 Mini) for recording and querying
+            financial expenses.</p>
+          <a href="#" target="_blank">View Demo</a>
+          <a href="#" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="assets/logo-Inova-2023.svg" alt="Inova Cartórios">
+        <div class="content">
+          <h3>Inova Cartórios App</h3>
+          <p>Angular front-end for notary solutions, with payment integrations and WhatsApp automation.</p>
+          <a href="#" target="_blank">View Demo</a>
+          <a href="#" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="assets/Portfolio_merytu_300x300px.png" alt="Merytu">
+        <div class="content">
+          <h3>Merytu Platform</h3>
+          <p>Complete refactor of Angular SaaS platform for career management in Portugal.</p>
+          <a href="#" target="_blank">View Demo</a>
+          <a href="#" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="assets/download.jpeg" alt="AdvisorCapital">
+        <div class="content">
+          <h3>AdvisorCapital</h3>
+          <p>Financial matching platform, leading Angular front-end development and contributing to Java back-end.</p>
+          <a href="#" target="_blank">View Demo</a>
+          <a href="#" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="assets/logo-guru.svg" alt="GuruSpoc">
+        <div class="content">
+          <h3>GuruSpoc</h3>
+          <p>Angular v18 front-end development for the first SPOC insurance broker in Brazil.</p>
+          <a href="#" target="_blank">View Demo</a>
+          <a href="#" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2>Contato</h2>
+    <form>
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu email" required>
+      <textarea rows="5" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 Lucas Gomes •
+    <a href="https://github.com/Tibluka" style="color: var(--accent);" target="_blank">GitHub</a> •
+    <a href="https://linkedin.com/in/lucas-gomes-233111124/" style="color: var(--accent);" target="_blank">LinkedIn</a>
+  </footer>
+
+  <script>
+    // Scroll reveal functionality
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(section => observer.observe(section));
+  </script>
+</body>
+
+</html>
